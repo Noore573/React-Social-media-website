@@ -1,0 +1,37 @@
+<i class="fas fa-home"></i> <!-- Home icon -->
+<i class="fas fa-camera"></i> <!-- Camera icon -->
+<i class="fas fa-images"></i> <!-- Gallery icon -->
+<i class="fas fa-microphone"></i> <!-- Microphone icon -->
+<i class="fas fa-camera-retro"></i> <!-- Media icon -->  
+<i class="fas fa-user"></i> <!-- Profile icon -->  
+<i class="fas fa-cog"></i> <!-- Settings icon -->
+
+//media icons:
+<i class="fas fa-play-circle"></i> <!-- Play Circle icon -->   **//use this one late
+<i class="fas fa-film"></i> <!-- Film icon -->  
+<i class="fas fa-music"></i> <!-- Music icon -->  
+<i class="fas fa-video"></i> <!-- Video icon -->  
+<i class="fas fa-image"></i> <!-- Image icon -->
+
+<i class="fas fa-tv"></i> <!-- TV icon -->  
+<i class="fas fa-broadcast-tower"></i> <!-- Broadcast Tower icon -->  
+<i class="fas fa-headphones-alt"></i> <!-- Headphones icon -->  
+<i class="fas fa-video"></i> <!-- Video icon -->  
+<i class="fas fa-play"></i> <!-- Play icon -->
+
+<i class="fas fa-thumbs-up"></i> <!-- Like Icon 1 -->
+<i class="fas fa-heart"></i> <!-- Like Icon 2 -->
+<i class="fas fa-star"></i> <!-- Like Icon 3 -->
+
+
+<i class="fas fa-thumbs-down"></i> <!-- Dislike Icon 1 -->
+<i class="fas fa-angry"></i> <!-- Dislike Icon 2 -->
+<i class="fas fa-ban"></i> <!-- Dislike Icon 3 -->
+
+<i class="fas fa-comment"></i> <!-- Comment Icon 1 -->
+<i class="fas fa-comment-dots"></i> <!-- Comment Icon 2 -->
+<i class="fas fa-pen"></i> <!-- Comment Icon 3 -->
+
+<i class="fas fa-share"></i> <!-- Share Icon 1 -->
+<i class="fas fa-share-square"></i> <!-- Share Icon 2 -->
+<i class="fas fa-retweet"></i> <!-- Share Icon 3 -->

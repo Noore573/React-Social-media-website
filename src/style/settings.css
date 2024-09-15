@@ -1,0 +1,12 @@
+.settingsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    /* background: red; */
+    width: 60%;
+    top: 20vh;
+    left: 20%;
+    gap: 10px;
+}

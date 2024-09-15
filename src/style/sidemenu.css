@@ -1,0 +1,26 @@
+.sidemenubtns{
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: stretch;    */
+}
+.sidemenubtns button{
+    background-color:rgb(53, 102, 165);
+    border-radius: 1px;
+}
+.sidemenubtns #space{
+    height: 100px;
+    background: red;
+}
+.essentials{
+    margin-bottom: 20vh;
+}
+/* .essentials button{
+    
+} */
+ .teq{
+    position: absolute;
+    bottom: 0;
+    
+ }

@@ -1,0 +1,78 @@
+.nav{
+    /* background-color: blue; */
+    background-color: rgb(53, 102, 165);
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    
+    
+}
+.nav .UserNav {
+    /* background-color: green; */
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.nav .UserNav img{
+    width: 8vh;
+    border-radius: 50px;
+    border: 2px solid white;
+    margin-left: 2%;
+}
+.nav .UserNav #link{
+    width: 8vh;
+    border-radius: 50px;
+    margin-left: 2%;
+    
+}
+.nav .navigation{
+    width: 45%;
+    height: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 200%;
+    transition: 0.2s ease;
+}
+.nav .navigation i{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background: red; */
+    height: 9vh;
+    width: 5vw;
+    transition: 0.2s ease-in;
+    color: rgba(255, 255, 255, 0.805);
+}
+.nav .navigation .undertab{
+    height: 1vh;
+    width: 100%;
+    background-color: lightblue;
+    border-radius: 5px;
+
+}
+.nav .navigation i:hover{
+    transform: translateY(-5%);
+    color: rgb(255, 255, 255);
+}
+.nav .applogo{
+    /* background-color: red; */
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 0.5%;
+}
+.nav .applogo img{
+    width: 8vh;
+    border-radius: 50px;
+}
+
+

@@ -1,0 +1,108 @@
+.post {
+    /* background-color: red; */
+    width: 80%;
+    /* height:50vh; */
+    /* padding: 20% 0; */
+    /* padding: 15% 0; */
+    padding: 1%;
+    height: 24vh;
+    margin: 5%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* position: relative; */
+    border: 0.5px solid rgba(142, 142, 142, 0.347);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+    background-color: white;
+    border-radius: 0 20px 20px 20px;
+    
+}
+.post .header{
+    height: 40%;
+    width: 100%;
+    /* margin: 2% 10%; */
+    /* background: violet; */
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    /* top: 0; */
+    
+}
+
+.post .header img{
+    /* background: yellow; */
+    width: 50px;
+    height: 50px;
+
+    margin: 10px;
+    object-fit: fill;
+    border-radius: 100%;
+    border: 2px solid white;
+
+}
+.post .header #username{
+    /* margin: 0 0 20px 100px; */
+    text-decoration: underline;
+    font-weight: bold;
+}
+.post .details{
+    /* background-color: green; */
+    width: 90%;
+    height: 50%;
+    margin: 10px ;
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* padding: 1px; */
+}
+.post .undertab{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* background-color: red; */
+}
+.post .undertab button{
+    background: white;
+    border: 1px solid  rgb(132, 132, 142);
+    border-radius: 0px;
+    color:black;
+    font-size: 120%;
+}
+.post .undertab #like{
+    border-radius: 8px 0 0 8px;
+}
+.post .undertab #share{
+    border-radius: 0px 8px 8px 0px;
+}
+
+.post .header #username:hover,.post .header img:hover{
+    scale: 1.01;
+    color: rgb(93, 93, 251);
+    cursor: pointer;
+}
+.post .undertab  #like:hover{
+    scale: 1.0;
+    color: rgb(93, 93, 251);
+}
+.post .undertab  #dislike:hover{
+    scale: 1.0;
+    color: rgb(230, 63, 2);
+}
+.post .undertab  #comment:hover{
+    scale: 1.0;
+    color: rgb(0, 224, 56);
+}
+.post .undertab  #share:hover{
+    scale: 1.0;
+    color: rgb(62, 233, 255);
+}
+.post .undertab button i:active{
+    scale: 1.1;
+}

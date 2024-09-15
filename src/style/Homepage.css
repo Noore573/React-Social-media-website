@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+*{
+    font-family: "Open Sans", sans-serif;
+}
+.Homepage{
+    font-weight: 500;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+
+}
+.sidemenu{
+    width: 20%;
+    height: 90vh;
+    /* margin: 10vh 0 10vh 0; */
+    background-color: blue;
+    position: fixed;
+    top: 10vh;
+    left: 0;
+}
+.posts{
+    background-color: rgba(173, 216, 230, 0.442);
+    margin-top: 10vh;
+    height: 90vh;
+    width: 60%;
+    margin-left: 20%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    scrollbar-width: none;
+    scrollbar-color: white rgb(53, 102, 165);
+    scroll-behavior: smooth;
+
+
+}
+.news{
+    width: 20%;
+    height: 90vh;
+    /* background-color: green; */
+    /* margin: 2% 0; */
+    position: fixed;
+    top: 10vh;
+    right: 0;
+
+
+}
+

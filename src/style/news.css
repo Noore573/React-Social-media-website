@@ -1,0 +1,18 @@
+.newsContainer {
+    overflow-y: scroll;
+    /* max-height: 400px; */
+    height: 100vh;
+    width: 100%;
+    /* background-color: red; */
+    /* Additional container styles */
+    scrollbar-width: thin;
+    scrollbar-color: white rgb(53, 102, 165);
+    scroll-behavior: smooth;
+  }
+  
+  .newsContainer img{
+    width: 80%;
+    height: 20vh;
+    overflow: hidden;
+    object-fit: contain;
+  }
