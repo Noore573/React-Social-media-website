@@ -1,26 +1,26 @@
 .post {
-    /* background-color: red; */
     width: 80%;
     /* height:50vh; */
     /* padding: 20% 0; */
     /* padding: 15% 0; */
     padding: 1%;
-    height: 24vh;
-    margin: 5%;
+    /* height: 24vh; */
+    margin: 5% ;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: space-between; */
+    align-items:center;
     /* position: relative; */
     border: 0.5px solid rgba(142, 142, 142, 0.347);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
     background-color: white;
     border-radius: 0 20px 20px 20px;
+    /* background-color: red; */
     
 }
 .post .header{
-    height: 40%;
+    height: 10vh;
     width: 100%;
     /* margin: 2% 10%; */
     /* background: violet; */
@@ -33,10 +33,12 @@
     
 }
 
+
 .post .header img{
     /* background: yellow; */
     width: 50px;
     height: 50px;
+
 
     margin: 10px;
     object-fit: fill;
@@ -48,17 +50,21 @@
     /* margin: 0 0 20px 100px; */
     text-decoration: underline;
     font-weight: bold;
+    
 }
 .post .details{
     /* background-color: green; */
     width: 90%;
-    height: 50%;
-    margin: 10px ;
+    height: 10vh;
+    /* margin: 10px ; */
     position: relative;
     display: flex;
-    justify-content: start;
-    align-items: center;
+    flex-direction: column;
+    /* justify-content: start; */
+    /* align-items: ; */
     /* padding: 1px; */
+    overflow: scroll;
+    scrollbar-width: none;
 }
 .post .undertab{
     display: flex;
@@ -66,20 +72,30 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* background-color: red; */
+    /* height: 20%; */
+    /* background-color: blue; */
 }
 .post .undertab button{
     background: white;
     border: 1px solid  rgb(132, 132, 142);
     border-radius: 0px;
     color:black;
-    font-size: 120%;
+    font-size: 100%;
 }
 .post .undertab #like{
     border-radius: 8px 0 0 8px;
 }
 .post .undertab #share{
     border-radius: 0px 8px 8px 0px;
+}
+.post .media{
+    /* background-color: red; */
+    width: 75%;
+    height: 40vh;
+}
+.post .media img ,.post .media video{
+    width: 100%;
+    height: 90%;
 }
 
 .post .header #username:hover,.post .header img:hover{

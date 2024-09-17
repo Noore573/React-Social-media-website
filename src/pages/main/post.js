@@ -210,6 +210,17 @@ const Posts = (props) => {
           <p>{props.post.description}</p>
         </div>
       </div>
+      {props.post.media &&(
+        <div className="media">
+          {props.post.media.includes("video")?(
+            <video controls src={props.post.media}>
+                {/* <source  type="video/mp4" >Your browser does not support the video</source> */}
+            </video>
+          ):(
+            <img src={props.post.media} alt="image"/>
+          )}
+        </div>
+      )}
       <div className="postdetails"></div>
       <div className="undertab">
         <button

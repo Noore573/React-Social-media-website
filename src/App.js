@@ -8,6 +8,7 @@ import Createpost from './pages/Create-Post/createpost';
 import Settings from './pages/settings';
 import Media from './pages/media';
 import Profile from './pages/profile';
+import Signup from './pages/profile/Signup.js';
 function App() {
   return (
     <div className='App'>
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />}></Route>
           <Route path='/login' element={<Login />}></Route>
+          <Route path='/signup' element={<Signup />}></Route>
           <Route path='/createpost' element={<Createpost />}></Route>
           <Route path='/settings' element={<Settings />}></Route>
           <Route path='/media' element={<Media />}></Route>

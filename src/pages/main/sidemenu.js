@@ -2,12 +2,17 @@ import React from "react";
 import "../../style/sidemenu.css";
 import { auth } from "../../config/firebase.ts";
 import { signOut } from "firebase/auth";
+import {useNavigate} from "react-router-dom"
 
 const Sidemenu = () => {
+  const navigate=useNavigate()
   const Logout = async () => {
     console.log("ef");
     await signOut(auth);
   };
+  const handlePost=()=>{
+    navigate("/createpost")
+  }
   return (
     <div className="sidemenubtns">
       <div className="essentials">
@@ -20,6 +25,9 @@ const Sidemenu = () => {
         <button id="trending">Trending</button>
       </div>
       <div className="teq">
+      <button id="createpost" onClick={handlePost}>
+          Post
+        </button>
         <button id="help">
           Help
         </button>

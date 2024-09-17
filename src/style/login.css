@@ -11,9 +11,10 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin: 0 auto;
 }
-input{
-    width: 20vw;
+.home  #email,.home #password{
+    width: 40vw;
     height: 5vh;
     border-radius: 15px;
     border: none;
@@ -21,6 +22,7 @@ input{
     padding-left: 10px;
     font-size: 80%;
 }
+/* .home button{ */
 button{
     width: 20vw;
     height: 5vh;
@@ -43,3 +45,22 @@ h1{
     text-transform: uppercase;
     font-weight: bold;   
 }
+.home .createprofile{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    width: 100vw;
+    font-size: 100%;
+}
+.home .createprofile #cp{
+    color: blue;
+    text-decoration: underline;
+}
+.home .createprofile #cp:hover{
+    color: rgb(70, 70, 255);
+    cursor: pointer;
+    scale: 1.1;
+}
+

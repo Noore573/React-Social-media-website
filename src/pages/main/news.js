@@ -15,7 +15,7 @@ const News = () => {
         const artictest=articles.map((article)=>article.title)
         console.log("Fetched!", artictest);
       } catch (error) {
-        alert(error);
+        // alert(error);
       }
     };
     fetchNewsData();
