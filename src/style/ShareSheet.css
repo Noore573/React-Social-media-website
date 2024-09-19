@@ -1,0 +1,25 @@
+/* ShareSheet.css */
+.share-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.579);
+    border-radius: 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+  }
+  .share-options {
+    text-align: center;
+  }
+  
+  .share-options button {
+    margin: 10px;
+  }

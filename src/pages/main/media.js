@@ -19,9 +19,12 @@ import { useNavigate } from "react-router-dom";
 import { Share } from "lucide-react";
 import ShareComponent from "./share.js";
 
-const Posts = (props) => {
+const Media = (props) => {
   const {} = props;
   const navigate=useNavigate()
+  const postRef = collection(db, "Posts");
+  const userRef=collection(db,"users")
+  const [postlist, setpostlist] = useState([]);
 
   const [user] = useAuthState(auth);
   const [likesammount, setlikeammounts] = useState(0);
@@ -195,19 +198,35 @@ const Posts = (props) => {
   const handleCloseCommentPopup = () => {
     setIsCommentPopupOpen(false);
   };
-  // const navigateToProfile = (userId) => {
-  //   console.log("yebi");
-  //   // history.push(`/viewprofile/${userId}`); 
-  //   // navigate("/viewprofile",{state:{myprops:userId}})
-  //   navigate("/viewprofile",userId)
-  // };
+
   const navigateToProfile = (userId) => {
     navigate(`/viewprofile/${userId}`);
 };
+const GetPosts = async () => {
+    console.log("User id: ",user.uid);
+    console.log("here1");
+    const data=query(postRef,where("media","!=",null))
+    console.log("here2");
+    data = await getDocs(postRef);
+    const posts = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 
+    const postUser=await Promise.all(
+      posts.map(async (post)=>{
+        const userDoc = await getDoc(doc(db, `users/${post.userId}`));
+      const user = userDoc.data();
+      return { ...post, user };
+      })
+    )
+  
+    console.log("🚀 ~ GetPosts ~ data:", posts);
+    setpostlist(posts);
+  };
   useEffect(() => {
     GetPostInfo();
   }, [user]);
+  useEffect(() => {
+    GetPosts();
+  }, []);
   const handleShare=async()=>{
 
   }
@@ -218,6 +237,7 @@ const Posts = (props) => {
   const handlecloseShareSheet=()=>{
     setisShareSheetOpen(false)
   }
+
   return (
     <div className="post">
       <div className="header">
@@ -298,7 +318,8 @@ const Posts = (props) => {
         </div>
       )}
     </div>
+
   );
 };
 
-export default Posts;
+export default Media;

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, } from "react";
+import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../config/firebase.ts";
 import {
@@ -11,38 +12,60 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import "../../style/post.css";
+import "../../style/viewpost.css";
 import profileimage from "../../assets/profile.jpg";
-import CommentPopup from "./comments.js"; 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CommentPopup from "./comments.js";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Share } from "lucide-react";
 import ShareComponent from "./share.js";
 
-const Posts = (props) => {
-  const {} = props;
-  const navigate=useNavigate()
-
+const Viewpost = () => {
+    const [postInfo, setPostInfo] = useState([]);
+    const { postID } = useParams();
+    const ViewPostInfo = async () => {
+        console.log("Viewing post :", postID);
+        try {
+          // const viewpostRef=doc(db,"Posts",postID)
+          const viewpostRef = doc(db, "Posts", postID);
+          const viewedPost = await getDoc(viewpostRef);
+          if (viewedPost.exists()) {
+            console.log("found");
+            setPostInfo(viewedPost.data());
+            console.log("set!", viewedPost.data());
+            console.log(postInfo);
+          } else {
+            console.log("404 post not found");
+          }
+        } catch (error) {
+          console.log("Error: ", error);
+        }
+      };
+  const navigate = useNavigate();
   const [user] = useAuthState(auth);
   const [likesammount, setlikeammounts] = useState(0);
   const [hasliked, sethasliked] = useState(false);
   const likeRef = collection(db, "likes"); //a ref for the likes table
-  const likesDoc = query(likeRef, where("postID", "==", props.post.id)); //to show the likes of the post
+
+  const likesDoc = query(likeRef, where("postID", "==", postID)); //to show the likes of the post
   //dislike
   const [dislikesammount, setdislikeammounts] = useState(0);
   const [hasDisliked, sethasDisliked] = useState(false);
   const dislikeRef = collection(db, "dislikes");
-  const dislikesDoc = query(dislikeRef, where("postID", "==", props.post.id));
+  const dislikesDoc = query(
+    dislikeRef,
+    where("postID", "==", postID)
+  );
   //comments
   const [comments, setComments] = useState([]);
   const [commentsammount, setCommentsammount] = useState(0);
   const commentRef = collection(db, "comments");
-  const commentDoc = query(commentRef, where("postID", "==", props.post.id));
+  const commentDoc = query(commentRef, where("postID", "==", postID));
 
   const [isCommentPopupOpen, setIsCommentPopupOpen] = useState(false); // State to manage comment pop-up visibility
 
   //share
-  const [isShareSheetOpen,setisShareSheetOpen]=useState(false)
+  const [isShareSheetOpen, setisShareSheetOpen] = useState(false);
 
   const GetPostInfo = async () => {
     const likedata = await getDocs(likesDoc);
@@ -78,7 +101,7 @@ const Posts = (props) => {
       const userDislikeDoc = await getDocs(
         query(
           dislikeRef,
-          where("postID", "==", props.post.id),
+          where("postID", "==", postID),
           where("userID", "==", user.uid)
         )
       );
@@ -93,7 +116,7 @@ const Posts = (props) => {
       const userLikeDoc = await getDocs(
         query(
           likeRef,
-          where("postID", "==", props.post.id),
+          where("postID", "==", postID),
           where("userID", "==", user.uid)
         )
       );
@@ -106,7 +129,7 @@ const Posts = (props) => {
       // user hasn't liked the post
       await addDoc(likeRef, {
         userID: user.uid,
-        postID: props.post.id,
+        postID: postID,
       });
       setlikeammounts(likesammount + 1);
       sethasliked(true);
@@ -118,7 +141,7 @@ const Posts = (props) => {
       const userDislikeDoc = await getDocs(
         query(
           dislikeRef,
-          where("postID", "==", props.post.id),
+          where("postID", "==", postID),
           where("userID", "==", user.uid)
         )
       );
@@ -135,7 +158,7 @@ const Posts = (props) => {
       const userLikeDoc = await getDocs(
         query(
           likeRef,
-          where("postID", "==", props.post.id),
+          where("postID", "==", postID),
           where("userID", "==", user.uid)
         )
       );
@@ -152,7 +175,7 @@ const Posts = (props) => {
       const userDislikeDoc = await getDocs(
         query(
           dislikeRef,
-          where("postID", "==", props.post.id),
+          where("postID", "==", postID),
           where("userID", "==", user.uid)
         )
       );
@@ -164,7 +187,7 @@ const Posts = (props) => {
     } else {
       await addDoc(dislikeRef, {
         userID: user.uid,
-        postID: props.post.id,
+        postID: postID,
       });
       setdislikeammounts(dislikesammount + 1);
       sethasDisliked(true);
@@ -176,7 +199,7 @@ const Posts = (props) => {
     try {
       await addDoc(commentRef, {
         userID: user.uid,
-        postID: props.post.id,
+        postID: postID,
         comment: commentText,
       });
     } catch (error) {
@@ -195,110 +218,108 @@ const Posts = (props) => {
   const handleCloseCommentPopup = () => {
     setIsCommentPopupOpen(false);
   };
-  // const navigateToProfile = (userId) => {
-  //   console.log("yebi");
-  //   // history.push(`/viewprofile/${userId}`); 
-  //   // navigate("/viewprofile",{state:{myprops:userId}})
-  //   navigate("/viewprofile",userId)
-  // };
+
   const navigateToProfile = (userId) => {
     navigate(`/viewprofile/${userId}`);
-};
+  };
 
   useEffect(() => {
     GetPostInfo();
   }, [user]);
-  const handleShare=async()=>{
+  const handleShare = async () => {};
+  const handleopenShareSheet = () => {
+    setisShareSheetOpen(true);
+    console.log(postInfo);
+  };
+  const handlecloseShareSheet = () => {
+    setisShareSheetOpen(false);
+  };
 
-  }
-  const handleopenShareSheet=()=>{
-    setisShareSheetOpen(true)
-    console.log(props.post);
-  }
-  const handlecloseShareSheet=()=>{
-    setisShareSheetOpen(false)
-  }
+  useEffect(() => {
+    console.log("effect: ", postID);
+    if (postID) ViewPostInfo(postID);
+  }, [postID]);
   return (
-    <div className="post">
-      <div className="header">
-        <div id="profileimage">
-          {props.post.userPofilePic ? (
-            <img src={props.post.userPofilePic} />
-          ) : (
-            <img src={profileimage} />
-          )}
+        <div className="view-post">
+        <div className="header">
+            <div id="profileimage">
+            {postInfo.userPofilePic ? (
+                <img src={postInfo.userPofilePic} />
+            ) : (
+                <img src={profileimage} />
+            )}
+            </div>
+            <div id="username" onClick={() => navigateToProfile(postInfo.userID)}>
+            <p>@{postInfo.username} </p>
+            </div>
         </div>
-        <div id="username" onClick={() => navigateToProfile(props.post.userID)}>
-          <p>@{props.post.username} </p>
+        <div className="details">
+            <div id="title">
+            <p>{postInfo.title}</p>
+            </div>
+            <div id="description">
+            <p>{postInfo.description}</p>
+            </div>
         </div>
-      </div>
-      <div className="details">
-        <div id="title">
-          <p>{props.post.title}</p>
-        </div>
-        <div id="description">
-          <p>{props.post.description}</p>
-        </div>
-      </div>
-      {props.post.media && (
-        <div className="media">
-          {props.post.media.includes("video") ? (
-            <video controls src={props.post.media}>
-              {/* <source  type="video/mp4" >Your browser does not support the video</source> */}
-            </video>
-          ) : (
-            <img src={props.post.media} alt="image" />
-          )}
-        </div>
-      )}
-      <div className="postdetails"></div>
-      <div className="undertab">
-        <button
-          id="like"
-          onClick={LikePost}
-          style={{ color: hasliked ? "blue" : "black" }}
-        >
-          <i className="fas fa-heart"></i>
-          {likesammount != 0 && <p>{likesammount}</p>}
-        </button>
-        <button
-          id="dislike"
-          onClick={DislikePost}
-          style={{ color: hasDisliked ? "red" : "black" }}
-        >
-          <i className="fas fa-thumbs-down"></i>
-          {dislikesammount != 0 && <p>{dislikesammount}</p>}
-        </button>
-        <button id="comment" onClick={handleOpenCommentPopup}>
-          <i className="fas fa-comment" />
-          {commentsammount != 0 && <p>{commentsammount}</p>}
-        </button>
-        <button id="share" onClick={handleopenShareSheet}>
-          <i className="fas fa-share"></i>
-        </button>
-        {isShareSheetOpen&&(
-          <ShareComponent postID={props.post.postID} onClose={handlecloseShareSheet}> grgrg</ShareComponent>
+        {postInfo.media && (
+            <div className="media">
+            {postInfo.media.includes("video") ? (
+                <video controls src={postInfo.media}>
+                {/* <source  type="video/mp4" >Your browser does not support the video</source> */}
+                </video>
+            ) : (
+                <img src={postInfo.media} alt="image" />
+            )}
+            </div>
         )}
-      </div>
-      {/* {isCommentPopupOpen && (
-        <CommentPopup
-          onAddComment={Addcomment}
-          onClose={handleCloseCommentPopup}
-        />
-      )} */}
-      {isCommentPopupOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <CommentPopup
-              comments={comments} // Pass the comments list here
-              onAddComment={Addcomment}
-              onClose={handleCloseCommentPopup}
-            />
-          </div>
+        <div className="postdetails"></div>
+        <div className="undertab">
+            <button
+            id="like"
+            onClick={LikePost}
+            style={{ color: hasliked ? "blue" : "black" }}
+            >
+            <i className="fas fa-heart"></i>
+            {likesammount != 0 && <p>{likesammount}</p>}
+            </button>
+            <button
+            id="dislike"
+            onClick={DislikePost}
+            style={{ color: hasDisliked ? "red" : "black" }}
+            >
+            <i className="fas fa-thumbs-down"></i>
+            {dislikesammount != 0 && <p>{dislikesammount}</p>}
+            </button>
+            <button id="comment">
+            <i className="fas fa-comment" />
+            {commentsammount != 0 && <p>{commentsammount}</p>}
+            </button>
+            <button id="share" onClick={handleopenShareSheet}>
+            <i className="fas fa-share"></i>
+            </button>
+            {isShareSheetOpen && (
+            <ShareComponent
+                postID={postInfo.postID}
+                onClose={handlecloseShareSheet}
+            >
+                {" "}
+                grgrg
+            </ShareComponent>
+            )}
         </div>
-      )}
-    </div>
+        {isCommentPopupOpen && (
+            <div className="modal-overlay">
+            <div className="modal-content">
+                <CommentPopup
+                comments={comments}
+                onAddComment={Addcomment}
+                onClose={handleCloseCommentPopup}
+                />
+            </div>
+            </div>
+        )}
+        </div>
   );
 };
 
-export default Posts;
+export default Viewpost;

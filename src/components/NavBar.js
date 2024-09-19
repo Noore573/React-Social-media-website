@@ -13,6 +13,7 @@ const NavBar = () => {
     console.log("ef");
     await signOut(auth);
   };
+
   return (
     <div className="nav">
       {user ? (

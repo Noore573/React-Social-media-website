@@ -45,6 +45,7 @@ const Signup = () => {
         password,
         email: user.email,
         profilepic: user.photoURL,
+        userID:user.uid
       });
       console.log("User information saved successfully!");
       navigate("/");

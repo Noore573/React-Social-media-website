@@ -1,0 +1,2 @@
+export const SET_USER = 'SET_USER';
+export const NAVIGATE_TO_PROFILE = 'NAVIGATE_TO_PROFILE';
